@@ -39,6 +39,7 @@ class AuthService
   end
 
   def log(exception)
+    #puts exception
   end
 end
 
