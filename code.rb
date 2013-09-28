@@ -3,7 +3,7 @@ require "minitest/spec"
 
 class Pacman
   def game_end? (board)
-    return 'Continue' if board == ["v.  ", "   ", "   "]
+    return 'Continue' if board[0].include?('.') or board[1].include?('.') or board[2].include?('.')
     return 'End'
   end
 end
@@ -26,6 +26,11 @@ describe Pacman do
 
     it "return 'Continue'" do
       board = ["v.  ", "   ", "   "]
+      @game.game_end?(board).must_equal 'Continue'
+    end
+
+    it "return 'Continue'" do
+      board = ["v  ", "   ", "..."]
       @game.game_end?(board).must_equal 'Continue'
     end
   end
