@@ -3,7 +3,8 @@ require "minitest/spec"
 
 class Pacman
   def game_end? (board)
-    return 'Continue' if board[0].include?('.') or board[1].include?('.') or board[2].include?('.')
+    lines_with_dot = board.select { |e| e.include? "."  }
+    return 'Continue' if lines_with_dot.length != 0
     return 'End'
   end
 end
