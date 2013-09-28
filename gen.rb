@@ -24,11 +24,15 @@ class AuthService
     req = Net::HTTP::Get.new(uri)
     req.basic_auth username, password
 
-    res = Net::HTTP.start(uri.hostname, uri.port,
-        :use_ssl => uri.scheme == 'https',
-        :verify_mode => 0) {|http|
-      http.request(req)
-    }
+    begin
+        res = Net::HTTP.start(uri.hostname, uri.port,
+            :use_ssl => uri.scheme == 'https',
+            :verify_mode => 0) {|http|
+          http.request(req)
+        }
+    rescue Timeout::Error
+        return false
+    end
 
     res.code == '200'
   end

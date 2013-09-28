@@ -20,5 +20,11 @@ describe AuthService do
                 .to_return(:status => 501)
             @as.check_credential("a", "1").must_equal false
         end
+
+        it "returns false on timeout" do
+            stub_request(:any, "https://a:1@localhost/home/a/inbox.json?auth=ba")
+                .to_timeout()
+            @as.check_credential("a", "1").must_equal false
+        end
     end
 end
