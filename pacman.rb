@@ -7,7 +7,15 @@ class PacMan
     end
 
 		def started?
-			true
+			if board ==   "....." \
+										"....." \
+										"....." \
+										"....." \
+										"....."
+				true
+			else
+				false
+			end
 		end
 end
 
