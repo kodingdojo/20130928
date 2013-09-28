@@ -11,13 +11,36 @@ class PacmanField
         @state = {
             :x => 1,
             :y => 1,
-            :direction => "V"
+            :direction => :up
         }
     end
 
     def tick
-        if @state[:direction] == "V"
-            @state[:x] = 0
+        x = @state[:x]
+        y = @state[:y]
+        if (@state[:direction] == :up) && (!wall? :up)
+            @state[:y] -= 1
+            @map[y - 1][x] = "V"
+            @map[y][x] = " "
+        elsif (@state[:direction] == :left) && (!wall? :left)
+            @state[:x] -= 1
+            @map[y][x - 1] = ">"
+            @map[y][x] = " "
+        end
+    end
+
+    def wall? direction
+        x = @state[:x]
+        y = @state[:y]
+        case direction
+        when :left
+            x - 1 <= 0
+        when :right
+            x + 1 >= 2
+        when :up
+            y - 1 <= 0
+        when :down
+            y + 1 >= 2
         end
     end
 
@@ -26,7 +49,10 @@ class PacmanField
     end
 
     def turnLeft
-        @map[@state[:x]][@state[:y]] = ">"
+        if wall? :left
+            @map[@state[:x]][@state[:y]] = ">"
+            @state[:direction] = :left
+        end
     end
 end
 
