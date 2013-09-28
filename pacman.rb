@@ -11,7 +11,7 @@ class PacmanField
     end
 
     def startGame
-        @map[1][1] = "^"
+        @map[1][1] = "V"
     end
 
     def turnLeft
@@ -34,7 +34,7 @@ describe PacmanField do
 
     it "has pacman in the middle when the game starts" do
         @field.startGame
-        @field.map[1][1].must_equal "^"
+        @field.map[1][1].must_equal "V"
     end
 
     it "turn to the left" do
