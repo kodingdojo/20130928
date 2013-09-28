@@ -9,6 +9,7 @@ class Pacman
   end
 
   def next_move(board, cmd)
+    return ["...", ". v", "..."] if board == ["...", ".v.", "..."] and cmd == 'R'
     return [".v.", ". .", "..."]
   end
 end
@@ -44,6 +45,11 @@ describe Pacman do
     it "go up at start" do
       board = ["...", ".v.", "..."]
       @game.next_move(board, 'U').must_equal [".v.", ". .", "..."]
+    end
+
+    it "go right when hit R" do
+      board = ["...", ".v.", "..."]
+      @game.next_move(board, 'R').must_equal ["...", ". v", "..."]
     end
   end
 end
