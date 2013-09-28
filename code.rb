@@ -17,6 +17,15 @@ describe Pacman do
       board = ["v   ", "   ", "   "]
       @game.game_end?(board).must_equal 'End'
     end
-  end
 
+    it "return 'End'" do
+      board = ["   ", " v ", "   "]
+      @game.game_end?(board).must_equal 'End'
+    end
+
+    it "return 'Continue'" do
+      board = ["v.  ", "   ", "   "]
+      @game.game_end?(board).must_equal 'Continue'
+    end
+  end
 end
