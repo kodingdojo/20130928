@@ -43,7 +43,7 @@ describe Pacman do
   describe "#next_move" do
     it "go up at start" do
       board = ["...", ".v.", "..."]
-      @game.next_move(board, 'N').must_equal [".v.", ". .", "..."]
+      @game.next_move(board, 'U').must_equal [".v.", ". .", "..."]
     end
   end
 end
