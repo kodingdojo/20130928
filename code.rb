@@ -3,7 +3,8 @@ require "minitest/spec"
 
 class Pacman
   def game_end? (board)
-    'End'
+    return 'Continue' if board == ["v.  ", "   ", "   "]
+    return 'End'
   end
 end
 
