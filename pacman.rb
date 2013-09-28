@@ -2,12 +2,13 @@ require 'minitest/spec'
 require 'minitest/autorun'
 
 class PacMan
+		attr_accessor :board
     def initialize initBoard
 			@board = initBoard
     end
 
 		def started?
-			if board ==   "....." \
+			if @board ==   "....." \
 										"....." \
 										"....." \
 										"....." \
