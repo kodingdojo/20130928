@@ -55,4 +55,13 @@ describe PacmanField do
         @field.map[1][0].must_equal ">"
         @field.map[1][1].must_equal " "
     end
+
+    it "stops when hit wall" do
+        @field.startGame
+        @field.turnLeft
+        @field.tick
+        @field.tick
+        @field.map[1][0].must_equal ">"
+        @field.map[1][1].must_equal " "
+    end
 end
