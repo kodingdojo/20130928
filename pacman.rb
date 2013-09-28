@@ -8,19 +8,25 @@ class PacmanField
         @map = [[".", ".", "."],
                 [".", ".", "."],
                 [".", ".", "."]]
+        @state = {
+            :x => 1,
+            :y => 1,
+            :direction => "V"
+        }
     end
 
     def tick
-        @map[1][1] = " "
-        @map[1][0] = ">"
+        if @state[:direction] == "V"
+            @state[:x] = 0
+        end
     end
 
     def startGame
-        @map[1][1] = "V"
+        @map[@state[:x]][@state[:y]] = "V"
     end
 
     def turnLeft
-        @map[1][1] = ">"
+        @map[@state[:x]][@state[:y]] = ">"
     end
 end
 
@@ -62,6 +68,13 @@ describe PacmanField do
         @field.tick
         @field.tick
         @field.map[1][0].must_equal ">"
+        @field.map[1][1].must_equal " "
+    end
+
+    it "moves forward" do
+        @field.startGame
+        @field.tick
+        @field.map[0][1].must_equal "V"
         @field.map[1][1].must_equal " "
     end
 end
