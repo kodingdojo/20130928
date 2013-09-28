@@ -3,7 +3,7 @@ require 'minitest/autorun'
 
 class PacMan
     def initialize initBoard
-  
+			@board = initBoard
     end
 
 		def started?
