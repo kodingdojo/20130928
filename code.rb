@@ -7,6 +7,10 @@ class Pacman
     return 'Continue' if lines_with_dot.length != 0
     return 'End'
   end
+
+  def next_move(board, cmd)
+    return [".v.", ". .", "..."]
+  end
 end
 
 describe Pacman do
@@ -33,6 +37,13 @@ describe Pacman do
     it "return 'Continue'" do
       board = ["v  ", "   ", "..."]
       @game.game_end?(board).must_equal 'Continue'
+    end
+  end
+
+  describe "#next_move" do
+    it "go up at start" do
+      board = ["...", ".v.", "..."]
+      @game.next_move(board, 'N').must_equal [".v.", ". .", "..."]
     end
   end
 end
