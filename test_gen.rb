@@ -26,5 +26,12 @@ describe AuthService do
                 .to_timeout()
             @as.check_credential("a", "1").must_equal false
         end
+
+        it "returns false on Errno::ECONNREFUSED" do
+            WebMock.disable!
+            as = AuthService.new("oteuheou")
+            as.check_credential("a", "1").must_equal false
+            WebMock.enable!
+        end
     end
 end

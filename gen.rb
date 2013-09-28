@@ -30,11 +30,15 @@ class AuthService
             :verify_mode => 0) {|http|
           http.request(req)
         }
-    rescue Timeout::Error
+    rescue Exception => e
+        log(e)
         return false
     end
 
     res.code == '200'
+  end
+
+  def log(exception)
   end
 end
 
