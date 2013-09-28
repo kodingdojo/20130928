@@ -32,7 +32,6 @@ class AuthService
 
     res.code == '200'
   end
-
 end
 
 authService = AuthService.new("192.168.100.18:8001")
