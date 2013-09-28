@@ -9,6 +9,10 @@ class PacmanField
                 [".", ".", "."],
                 [".", ".", "."]]
     end
+
+    def startGame
+        @map[1][1] = "^"
+    end
 end
 
 describe PacmanField do
@@ -22,5 +26,10 @@ describe PacmanField do
                 cell.must_equal "."
             }
         }
+    end
+
+    it "has pacman in the middle when the game starts" do
+        @field.startGame
+        @field.map[1][1].must_equal "^"
     end
 end
